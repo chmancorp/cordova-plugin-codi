@@ -8,7 +8,7 @@ var MiPlugin = {
         exec(successCallback, errorCallback, PLUGIN_NAME, "saludar", [name]);
   },
   echo: function(phrase, cb){
-    exec(cb, null, PLUGIN_NAME, 'echo', [phrase]);
+    exec(cb, null, PLUGIN_NAME, "echo", [phrase]);
   }
 };
 
