@@ -33,6 +33,10 @@ public class MiPlugin extends CordovaPlugin {
       final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... "+phrase);
       callbackContext.sendPluginResult(result);
     }
+    if(action.equals("echo")){
+      String phrase = args.getString(0);
+      Log.d("TAG", phrase);
+    }
     return true;
   }
 
