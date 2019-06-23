@@ -25,7 +25,7 @@ public class MiPlugin extends CordovaPlugin {
     Log.d(TAG, "Inicializando MiPlugin");
   }
 
-  public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
+  public boolean execute(String action, JSONArray args,  CallbackContext callbackContext) throws JSONException {
     // if(action.equals("saludar")) {
     //   // An example of returning data back to the web layer
     //    String phrase = args.getString(0);
