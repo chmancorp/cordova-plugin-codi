@@ -25,26 +25,28 @@ public class MiPlugin extends CordovaPlugin {
     Log.d(TAG, "Inicializando MiPlugin");
   }
 
-  public boolean execute(String action, JSONArray args,  CallbackContext callbackContext) throws JSONException {
-    // if(action.equals("saludar")) {
-    //   // An example of returning data back to the web layer
-    //    String phrase = args.getString(0);
-    //   // Echo back the first argument      
-    //   final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... "+phrase);
-    //   callbackContext.sendPluginResult(result);
-    // }
-    // if(action.equals("echo")){
+  public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
+    if(action.equals("saludar")) {
+      // An example of returning data back to the web layer
+       String phrase = args.getString(0);
+      // Echo back the first argument      
+      final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... "+phrase);
+      callbackContext.sendPluginResult(result);
+    }
+    if(action.equals("echo")){
       String phrase = args.getString(0);
-        callbackContext.success(phrase);
+      final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... "+phrase);
+      String myString = "Some string";
+        callbackContext.success(myString);
       
       Log.d("TAG", phrase);
       debug.log("TEst");
-    // }
-    // if("test".equals(action)){
-    //         final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... ");
-    //   Log.d("TAG", "test");
+    }
+    if("test".equals(action)){
+            final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... ");
+      Log.d("TAG", "test");
 
-    // }
+    }
     return true;
   }
 
