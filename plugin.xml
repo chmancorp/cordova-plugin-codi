@@ -18,7 +18,7 @@
         <!-- Este es el nombre por el cual se accedera el plugin -->
         <clobbers target="MiPlugin" />
       </js-module>
-      <config-file target="res/xml/config.xml" parent="/*">
+      <config-file target="config.xml" parent="/*">
         <feature name="MiPlugin">
           <param name="android-package" value="com.example.MiPlugin" />
           <param name="onload" value="true" />

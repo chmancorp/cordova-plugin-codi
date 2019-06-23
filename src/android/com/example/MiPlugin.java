@@ -39,6 +39,11 @@ public class MiPlugin extends CordovaPlugin {
       Log.d("TAG", phrase);
       debug.log("TEst");
     }
+    if("test".equals(action)){
+            final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... ");
+      Log.d("TAG", "test");
+
+    }
     return true;
   }
 

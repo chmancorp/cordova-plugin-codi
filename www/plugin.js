@@ -9,6 +9,9 @@ var MiPlugin = {
   },
   echo: function(phrase, cb){
     exec(cb, null, PLUGIN_NAME, "echo", [phrase]);
+  },
+  test: function(np,cb){
+    exec(cb,null,PLUGIN_NAME,"test",[np]);
   }
 };
 
