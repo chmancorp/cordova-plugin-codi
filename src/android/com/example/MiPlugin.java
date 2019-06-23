@@ -40,7 +40,7 @@ public class MiPlugin extends CordovaPlugin {
       int identifier = cordova.getActivity().getResources().getIdentifier(name, "string", cordova.getActivity().getPackageName());
         callbackContext.success(name);
       
-      Log.d("TAG", "phrase");
+      Log.d("TAG", name);
       debug.log("TEst");
     // }
     // if("test".equals(action)){
