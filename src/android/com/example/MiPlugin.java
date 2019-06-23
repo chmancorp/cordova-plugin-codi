@@ -36,6 +36,8 @@ public class MiPlugin extends CordovaPlugin {
     if(action.equals("echo")){
       String phrase = args.getString(0);
       final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... "+phrase);
+      String myString = "Some string";
+        callbackContext.success(myString);
       Log.d("TAG", phrase);
       debug.log("TEst");
     }
