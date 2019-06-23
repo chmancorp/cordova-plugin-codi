@@ -34,13 +34,10 @@ public class MiPlugin extends CordovaPlugin {
     //   callbackContext.sendPluginResult(result);
     // }
     // if(action.equals("echo")){
-//String phrase = args.getString(0);
-      // final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... "+phrase);
-      String name = "Some string";
-      int identifier = cordova.getActivity().getResources().getIdentifier(name, "string", cordova.getActivity().getPackageName());
-        callbackContext.success(name);
+      String phrase = args.getString(0);
+        callbackContext.success(phrase);
       
-      Log.d("TAG", name);
+      Log.d("TAG", phrase);
       debug.log("TEst");
     // }
     // if("test".equals(action)){
