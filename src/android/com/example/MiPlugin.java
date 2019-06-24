@@ -38,8 +38,9 @@ public class MiPlugin extends CordovaPlugin {
       // getIdn();
       callbackContext.success(codr);
       Log.d("TAG", phone);
-      return true;
     }
+    return true;
+
   }
 
 }
