@@ -32,11 +32,9 @@ public class MiPlugin extends CordovaPlugin {
       String phone = args.getString(2);
       String gId = args.getString(3);
 
-      // final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... "+phrase);
-      // String myString = "Some string";
-      //   callbackContext.success(myString);
-      // getIdn();
-      callbackContext.success(codr);
+      result
+
+      callbackContext.success(result);
       Log.d("TAG", phone);
     }
     return true;
