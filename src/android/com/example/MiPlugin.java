@@ -21,7 +21,7 @@ public class MiPlugin extends CordovaPlugin {
 
   public void initialize(CordovaInterface cordova, CordovaWebView webView) {
     super.initialize(cordova, webView);
-
+    CallbackContext callbackContext = new CallbackContext();
     Log.d(TAG, "Inicializando MiPlugin");
   }
 
@@ -35,12 +35,13 @@ public class MiPlugin extends CordovaPlugin {
     }
     if(action.equals("echo")){
       String phrase = args.getString(0);
-      final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... "+phrase);
-      String myString = "Some string";
-        callbackContext.success(myString);
-      
-      Log.d("TAG", phrase);
-      debug.log("TEst");
+      // final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... "+phrase);
+      // String myString = "Some string";
+      //   callbackContext.success(myString);
+      // getIdn();
+      this.callbackContext.success(phrase);
+      Log.d("TAG", this.callbackContext);
+      return true;
     }
     if("test".equals(action)){
             final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... ");
