@@ -26,15 +26,13 @@ public class MiPlugin extends CordovaPlugin {
   }
 
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
-    if(action.equals("saludar")) {
-      // An example of returning data back to the web layer
-       String phrase = args.getString(0);
-      // Echo back the first argument      
-      final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... "+phrase);
-      callbackContext.sendPluginResult(result);
-    }
+
     if(action.equals("echo")){
-      String phrase = args.getString(0);
+      String codr = args.getString(0);
+      String idh = args.getString(1);
+      String phone = args.getString(2);
+      String gId = args.getString(3);
+
       // final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... "+phrase);
       // String myString = "Some string";
       //   callbackContext.success(myString);
@@ -43,12 +41,6 @@ public class MiPlugin extends CordovaPlugin {
       Log.d("TAG", this.callbackContext);
       return true;
     }
-    if("test".equals(action)){
-            final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... ");
-      Log.d("TAG", "test");
-
-    }
-    return true;
   }
 
 }
