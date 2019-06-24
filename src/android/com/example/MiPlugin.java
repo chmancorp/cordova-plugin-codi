@@ -21,7 +21,6 @@ public class MiPlugin extends CordovaPlugin {
 
   public void initialize(CordovaInterface cordova, CordovaWebView webView) {
     super.initialize(cordova, webView);
-    CallbackContext callbackContext = new CallbackContext();
     Log.d(TAG, "Inicializando MiPlugin");
   }
 
