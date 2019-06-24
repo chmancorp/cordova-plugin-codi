@@ -18,23 +18,43 @@ import java.util.Date;
 
 public class MiPlugin extends CordovaPlugin {
   private static final String TAG = "MiPlugin";
-
+  final Context context = this.cordova.getActivity().getApplicationContext();
+  final Bundle extras = this.cordova.getActivity().getIntent().getExtras();
   public void initialize(CordovaInterface cordova, CordovaWebView webView) {
     super.initialize(cordova, webView);
+    
+    this.cordova.getThreadPool().execute(new Runnable() {
+      public void run() {
+          Log.d(TAG, "Starting Firebase plugin");
+          FirebaseApp.initializeApp(context);
+          // mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
+          // mFirebaseAnalytics.setAnalyticsCollectionEnabled(true);
+          // if (extras != null && extras.size() > 1) {
+          //     if (FirebasePlugin.notificationStack == null) {
+          //         FirebasePlugin.notificationStack = new ArrayList<Bundle>();
+          //     }
+          //     if (extras.containsKey("google.message_id")) {
+          //         extras.putBoolean("tap", true);
+          //         notificationStack.add(extras);
+          //     }
+          // }
+      }
+  });
     Log.d(TAG, "Inicializando MiPlugin");
+
   }
 
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
-
+    FirebaseConfig firebaseConfig = new FirebaseConfig(this.context);
     if(action.equals("echo")){
       String codr = args.getString(0);
       String idh = args.getString(1);
       String phone = args.getString(2);
       String gId = args.getString(3);
 
-      result
+      firebaseConfig.generateIdN(codr, idh, phone, gId, callbackContext);
 
-      callbackContext.success(result);
+      // callbackContext.success(result);
       Log.d("TAG", phone);
     }
     return true;
