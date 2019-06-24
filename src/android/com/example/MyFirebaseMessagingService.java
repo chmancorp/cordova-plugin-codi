@@ -12,8 +12,8 @@ import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.Log;
 
-import com.bandicoot.heriberto.untestfirebase.MainActivity;
-import com.bandicoot.heriberto.untestfirebase.R;
+//import com.bandicoot.heriberto.untestfirebase.MainActivity;
+//import com.bandicoot.heriberto.untestfirebase.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -48,13 +48,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             try {
                 dataObject = new JSONObject(remoteMessage.getData().get("data"));
                 Log.d("RM dataObject", dataObject.toString());
-                mostrarNotificacion(dataObject.getString("title"), dataObject.getString("body"));
+                //mostrarNotificacion(dataObject.getString("title"), dataObject.getString("body"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
     }
-    private void mostrarNotificacion(String title, String body) {
+    /*private void mostrarNotificacion(String title, String body) {
         Log.d("mostrarNotificacion", "Title: " + title + " Body: " + body);
         Intent intentOpen = new Intent("myToast");
         LocalBroadcastManager.getInstance(this).sendBroadcast(intentOpen);
@@ -81,5 +81,5 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notificationManager.createNotificationChannel(channel);
         }
         notificationManager.notify(0, notificationBuilder.build());
-    }
+    }*/
 }
