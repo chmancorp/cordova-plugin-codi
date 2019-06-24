@@ -36,8 +36,8 @@ public class MiPlugin extends CordovaPlugin {
       // String myString = "Some string";
       //   callbackContext.success(myString);
       // getIdn();
-      this.callbackContext.success(phrase);
-      Log.d("TAG", this.callbackContext);
+      callbackContext.success(codr);
+      Log.d("TAG", phone);
       return true;
     }
   }
