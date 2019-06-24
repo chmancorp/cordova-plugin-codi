@@ -13,7 +13,4 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-
-cdvPluginPostBuildExtras.add({
-    apply plugin: 'com.google.gms.google-services'
-})
+apply plugin: 'com.google.gms.google-services'
