@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.firebase.FirebaseApp;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -50,11 +51,8 @@ public class MiPlugin extends CordovaPlugin {
   }
 
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
-    FirebaseConfig firebaseConfig = new FirebaseConfig(this.context);
     if(action.equals("echo")){
-      FirebaseConfig firebaseConfig = new FirebaseConfig(this.context);
-      Log.d("TAG", args);
-      Log.d("TAG",firebaseConfig);
+      FirebaseConfig firebaseConfig = new FirebaseConfig(this.cordova.getActivity());
       String codr = args.getString(0);
       String idh = args.getString(1);
       String phone = args.getString(2);

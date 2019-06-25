@@ -41,7 +41,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
         if(remoteMessage.getNotification() !=null) {
             Log.d("RM noti.body", remoteMessage.getNotification().getBody());
-            mostrarNotificacion(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
+//mostrarNotificacion(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
         }
         else if(remoteMessage.getData() != null) {
             JSONObject dataObject = null;

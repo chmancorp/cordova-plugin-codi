@@ -110,7 +110,7 @@ public class FirebaseConfig {
         try {
             //String cGoogleID = "201247069219"; //IDProyectoBanxico
             setInitializeAppBanxico(cGoogleID, androidID);
-            new TokenBanxico().execute(cGoogleID);
+            new TokenBanxico(this.callbackContext).execute(cGoogleID);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -164,6 +164,10 @@ public class FirebaseConfig {
         }
     }
     private class TokenBanxico extends AsyncTask<String, Void, Void>{
+        CallbackContext callbackContext;
+        public TokenBanxico(CallbackContext callbackContext){
+            this.callbackContext = callbackContext;
+        }
         @Override
         protected Void doInBackground(String... params) {
             try {
