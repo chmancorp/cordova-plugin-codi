@@ -34,7 +34,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class FirebaseConfig {
-    private String androidID = "7bd59384786d2e44"; //AndroidIDPrivada
+    private String androidID = "764d2cb7da3280eb"; //AndroidIDPrivada
     private String token = null;
     private FirebaseApp myApp;
     private int numIntent = 0;
@@ -50,8 +50,9 @@ public class FirebaseConfig {
 
     public void generateIdN(String codR,String idH,String nc,String gId, CallbackContext callbackContext){
         this.callbackContext = callbackContext;
-        String gIdDecrypt = decrypGId("164677","7f81804bf3b48a6ff81bf0bbb2c4bf01f9ccbec3-com.mitiendita.codi","9617094922","fcaab4e94de150e986d954e425569a16");
+        String gIdDecrypt = decrypGId(codr, idH,nc,"fcaab4e94de150e986d954e425569a16");
         if(!gIdDecrypt.isEmpty()){
+            configurarFirebaseAppPrivada();
             configurarFirebaseAppBanxico(gId);
 
         }
@@ -96,7 +97,7 @@ public class FirebaseConfig {
     {
         Log.d("Msj: ", "configurarFirebaseAppPrivada");
         try {
-            String cGoogleID = "385629510764"; //IDProyectoPrivado
+            String cGoogleID = "683134177964"; //IDProyectoPrivado
             setInitializeAppPrivada(cGoogleID, androidID);
             new TokenPrivada().execute(cGoogleID);
         } catch (Exception e) {

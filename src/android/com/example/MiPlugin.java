@@ -5,6 +5,7 @@ package com.example;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Build;  
 
 import com.google.firebase.FirebaseApp;
 
@@ -24,11 +25,13 @@ import java.util.Date;
 
 public class MiPlugin extends CordovaPlugin {
   private static final String TAG = "MiPlugin";
-  final Context context = this.cordova.getActivity().getApplicationContext();
-  final Bundle extras = this.cordova.getActivity().getIntent().getExtras();
+  private static  boolean IS_AT_LEAST_LOLLIPOP = Build.VERSION.SDK_INT >= 21;
+  Context context; 
+  Bundle extras;
   public void initialize(CordovaInterface cordova, CordovaWebView webView) {
     super.initialize(cordova, webView);
-    
+    this.context = IS_AT_LEAST_LOLLIPOP ? cordova.getActivity().getWindow().getContext() : cordova.getActivity().getApplicationContext(); 
+    this.extras = this.cordova.getActivity().getIntent().getExtras();
     this.cordova.getThreadPool().execute(new Runnable() {
       public void run() {
           Log.d(TAG, "Starting Firebase plugin");
