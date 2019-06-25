@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "385629510764",
-    "firebase_url": "https://androidnativofirebase.firebaseio.com",
-    "project_id": "androidnativofirebase",
-    "storage_bucket": "androidnativofirebase.appspot.com"
+    "project_number": "683134177964",
+    "firebase_url": "https://testwionic.firebaseio.com",
+    "project_id": "testwionic",
+    "storage_bucket": "testwionic.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:385629510764:android:7bd59384786d2e44",
+        "mobilesdk_app_id": "1:683134177964:android:764d2cb7da3280eb",
         "android_client_info": {
-          "package_name": "com.bandicoot.heriberto.untestfirebase"
+          "package_name": "io.ionic.starter"
         }
       },
       "oauth_client": [
         {
-          "client_id": "385629510764-vjfjqh7sutu4l11an998j2dbppav1cbc.apps.googleusercontent.com",
+          "client_id": "683134177964-8mhl45ni3h3mp68pvmtienr5vp7re4lf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBGvbslJcMLq2PVg8hA9itXMWTHxudcC9I"
+          "current_key": "AIzaSyCVimJorfdScyDdeJdjiFmhoCA9xuJBwSM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "385629510764-vjfjqh7sutu4l11an998j2dbppav1cbc.apps.googleusercontent.com",
+              "client_id": "683134177964-8mhl45ni3h3mp68pvmtienr5vp7re4lf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -2,6 +2,11 @@
  */
 package com.example;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
