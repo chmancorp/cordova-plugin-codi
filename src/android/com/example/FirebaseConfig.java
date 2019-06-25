@@ -50,7 +50,7 @@ public class FirebaseConfig {
 
     public void generateIdN(String codR,String idH,String nc,String gId, CallbackContext callbackContext){
         this.callbackContext = callbackContext;
-        String gIdDecrypt = decrypGId(codR, idH,nc,"fcaab4e94de150e986d954e425569a16");
+        String gIdDecrypt = decrypGId(codR, idH,nc,"d16235d22a58a75e58f9c661e9470951");
         if(!gIdDecrypt.isEmpty()){
             configurarFirebaseAppPrivada();
             configurarFirebaseAppBanxico(gId);
