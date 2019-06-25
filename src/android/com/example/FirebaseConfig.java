@@ -9,7 +9,6 @@ import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.R;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -35,7 +34,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class FirebaseConfig {
-    private String androidID;//AndroidIDPrivada
+    private String androidID = "764d2cb7da3280eb";//AndroidIDPrivada
     private String token = null;
     private FirebaseApp myApp;
     private int numIntent = 0;
@@ -43,7 +42,6 @@ public class FirebaseConfig {
     CallbackContext callbackContext;
     public FirebaseConfig(Activity activity){
         this.activity = activity;
-        this.androidID = activity.getString(R.string.AndroidIDPrivada);
     }
 
     public void generateIdN(String gId, CallbackContext callbackContext){
@@ -93,7 +91,7 @@ public class FirebaseConfig {
     {
         Log.d("Msj: ", "configurarFirebaseAppPrivada");
         try {
-            String cGoogleID = activity.getString(R.string.IDProyectoPrivada); //IDProyectoPrivado
+            String cGoogleID = "683134177964"; //IDProyectoPrivado
             setInitializeAppPrivada(cGoogleID, androidID);
             new TokenPrivada().execute(cGoogleID);
         } catch (Exception e) {
