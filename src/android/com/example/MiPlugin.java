@@ -47,6 +47,9 @@ public class MiPlugin extends CordovaPlugin {
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     FirebaseConfig firebaseConfig = new FirebaseConfig(this.context);
     if(action.equals("echo")){
+      FirebaseConfig firebaseConfig = new FirebaseConfig(this.context);
+      Log.d("TAG", args);
+      Log.d("TAG",firebaseConfig);
       String codr = args.getString(0);
       String idh = args.getString(1);
       String phone = args.getString(2);
