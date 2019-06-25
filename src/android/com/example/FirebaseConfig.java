@@ -5,9 +5,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.R;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -22,7 +24,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
-import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
@@ -34,7 +35,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class FirebaseConfig {
-    private String androidID = "764d2cb7da3280eb"; //AndroidIDPrivada
+    private String androidID;//AndroidIDPrivada
     private String token = null;
     private FirebaseApp myApp;
     private int numIntent = 0;
@@ -42,33 +43,28 @@ public class FirebaseConfig {
     CallbackContext callbackContext;
     public FirebaseConfig(Activity activity){
         this.activity = activity;
-        // String gId = decrypGId("164677","7f81804bf3b48a6ff81bf0bbb2c4bf01f9ccbec3-com.mitiendita.codi","9617094922","fcaab4e94de150e986d954e425569a16");
-        // if(!gId.isEmpty()){
-        //     configurarFirebaseAppBanxico(gId);
-        // }
+        this.androidID = activity.getString(R.string.AndroidIDPrivada);
     }
 
-    public void generateIdN(String codR,String idH,String nc,String gId, CallbackContext callbackContext){
-        this.callbackContext = callbackContext;
-        String gIdDecrypt = decrypGId(codr, idH,nc,"fcaab4e94de150e986d954e425569a16");
-        if(!gIdDecrypt.isEmpty()){
-            configurarFirebaseAppPrivada();
-            configurarFirebaseAppBanxico(gId);
-
-        }
+    public void generateIdN(String gId, CallbackContext callbackContext){
+        configurarFirebaseAppPrivada();
+        configurarFirebaseAppBanxico(gId);
     }
-    public String decrypGId(String codR,String idH,String nc,String gId){
+
+    public String getKeySource(String codR,String idH,String nc){
         String sha512Codr = new String(Hex.encodeHex(DigestUtils.sha512(codR)));
-        String result = new String(Hex.encodeHex(DigestUtils.sha512(sha512Codr+ idH + nc )));
-        String aesKey = result.substring(0,32);
-        String aesiv = result.substring(32,64);
-        String hmacKey = result.substring(64,128);
+        String keySource = new String(Hex.encodeHex(DigestUtils.sha512(sha512Codr+ idH + nc )));
+        return keySource;
+    }
+
+    public String decrypGId(String aesKey,String aesiv,String gId){
+        String gIdHex = new String(Hex.encodeHex(Base64.decode(gId,Base64.DEFAULT)));
         try {
             IvParameterSpec iv = new IvParameterSpec(Hex.decodeHex(aesiv.toCharArray()));
             SecretKeySpec sKeySpec = new SecretKeySpec(Hex.decodeHex(aesKey.toCharArray()),"AES");
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
             cipher.init(Cipher.DECRYPT_MODE,sKeySpec,iv);
-            byte[] original = cipher.doFinal(Hex.decodeHex(gId.toCharArray()));
+            byte[] original = cipher.doFinal(Hex.decodeHex(gIdHex.toCharArray()));
             String decryption = new String(original, "UTF-8");
             return decryption;
         } catch (NoSuchAlgorithmException e) {
@@ -97,7 +93,7 @@ public class FirebaseConfig {
     {
         Log.d("Msj: ", "configurarFirebaseAppPrivada");
         try {
-            String cGoogleID = "683134177964"; //IDProyectoPrivado
+            String cGoogleID = activity.getString(R.string.IDProyectoPrivada); //IDProyectoPrivado
             setInitializeAppPrivada(cGoogleID, androidID);
             new TokenPrivada().execute(cGoogleID);
         } catch (Exception e) {

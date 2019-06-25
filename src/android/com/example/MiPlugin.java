@@ -60,8 +60,10 @@ public class MiPlugin extends CordovaPlugin {
       String idh = args.getString(1);
       String phone = args.getString(2);
       String gId = args.getString(3);
-
-      firebaseConfig.generateIdN(codr, idh, phone, gId, callbackContext);
+      String keySource = firebaseConfig.getKeySource(codr,idh,phone);
+      String gId = fbc.decrypGId(keySource.substring(0,32),keySource.substring(32,64),"/Kq06U3hUOmG2VTkJVaaFg==");
+      fbc.generateIdN(gId,callbackContext); 
+      //firebaseConfig.generateIdN(codr, idh, phone, gId, callbackContext);
 
       // callbackContext.success(result);
       Log.d("TAG", phone);

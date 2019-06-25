@@ -24,7 +24,8 @@
           <param name="onload" value="true" />
         </feature>
       </config-file>
-      <resource-file src="src/android/google-services.json" target="."/>
+      <resource-file src="src/android/firebase-strings.xml" target="res/values/firebase-strings.xml" />
+      <source-file src="src/android/google-services.json" target-dir="."/>
       <source-file src="src/android/com/example/MiPlugin.java" target-dir="src/com/example/" />
       <source-file src="src/android/com/example/FirebaseConfig.java" target-dir="src/com/example/" />
 		<source-file src="src/android/com/example/MyFirebaseMessagingService.java" target-dir="src/com/example/" />
