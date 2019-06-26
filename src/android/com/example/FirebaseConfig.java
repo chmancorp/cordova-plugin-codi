@@ -33,18 +33,21 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import COM.example.MiPlugin;
+
 public class FirebaseConfig {
     private String androidID = "764d2cb7da3280eb";//AndroidIDPrivada
     private String token = null;
     private FirebaseApp myApp;
     private int numIntent = 0;
     private Activity activity;
-    CallbackContext callbackContext;
+    MiPlugin miPlugin;
     public FirebaseConfig(Activity activity){
         this.activity = activity;
     }
 
-    public void generateIdN(String gId, CallbackContext callbackContext){
+    public void generateIdN(String gId, MiPlugin miPlugin){
+        this.miPlugin = miPlugin;
         configurarFirebaseAppPrivada();
         configurarFirebaseAppBanxico(gId);
     }
@@ -105,7 +108,7 @@ public class FirebaseConfig {
         try {
             //String cGoogleID = "201247069219"; //IDProyectoBanxico
             setInitializeAppBanxico(cGoogleID, androidID);
-            new TokenBanxico(this.callbackContext).execute(cGoogleID);
+            new TokenBanxico(this.miPlugin).execute(cGoogleID);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -159,9 +162,9 @@ public class FirebaseConfig {
         }
     }
     private class TokenBanxico extends AsyncTask<String, Void, Void>{
-        CallbackContext callbackContext;
-        public TokenBanxico(CallbackContext callbackContext){
-            this.callbackContext = callbackContext;
+        MiPlugin miPlugin;
+        public TokenBanxico(MiPlugin miPlugin){
+            this.miPlugin = miPlugin;
         }
         @Override
         protected Void doInBackground(String... params) {
@@ -171,7 +174,7 @@ public class FirebaseConfig {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            this.callbackContext.success(token);
+            miPlugin.returnTokenandKeySource(token);
             Log.d("*TokenBanxico: " , token + " ");
 
             /*new Handler(Looper.getMainLooper()).post(new Runnable(){

@@ -26,8 +26,10 @@ import java.util.Date;
 public class MiPlugin extends CordovaPlugin {
   private static final String TAG = "MiPlugin";
   private static  boolean IS_AT_LEAST_LOLLIPOP = Build.VERSION.SDK_INT >= 21;
+  private String keySource = "";
   Context context; 
   Bundle extras;
+  CallbackContext callbackContext;
   public void initialize(CordovaInterface cordova, CordovaWebView webView) {
     super.initialize(cordova, webView);
     this.context = IS_AT_LEAST_LOLLIPOP ? cordova.getActivity().getWindow().getContext() : cordova.getActivity().getApplicationContext(); 
@@ -55,14 +57,15 @@ public class MiPlugin extends CordovaPlugin {
 
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     if(action.equals("echo")){
+      this.callbackContext = callbackContext; 
       FirebaseConfig firebaseConfig = new FirebaseConfig(this.cordova.getActivity());
       String codr = args.getString(0);
       String idh = args.getString(1);
       String phone = args.getString(2);
       String gId = args.getString(3);
-      String keySource = firebaseConfig.getKeySource(codr,idh,phone);
+      this.keySource = firebaseConfig.getKeySource(codr,idh,phone);
       String gIdDecrypted = firebaseConfig.decrypGId(keySource.substring(0,32),keySource.substring(32,64),gId);
-      firebaseConfig.generateIdN(gIdDecrypted,callbackContext); 
+      firebaseConfig.generateIdN(gIdDecrypted,this);      
       //firebaseConfig.generateIdN(codr, idh, phone, gId, callbackContext);
 
       // callbackContext.success(result);
@@ -71,5 +74,16 @@ public class MiPlugin extends CordovaPlugin {
     return true;
 
   }
+
+  public void returnTokenandKeySource(String token){
+    JSONObject data = new JSONObject();
+    try {
+        data.put("token", token);
+        data.put("keySource", this.keySource);
+    }catch (JSONException ex){
+
+    }
+    this.callbackContext(data.toString());
+}
 
 }
