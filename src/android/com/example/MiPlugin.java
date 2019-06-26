@@ -28,6 +28,7 @@ public class MiPlugin extends CordovaPlugin {
   private static  boolean IS_AT_LEAST_LOLLIPOP = Build.VERSION.SDK_INT >= 21;
   Context context; 
   Bundle extras;
+  String Key;
   public void initialize(CordovaInterface cordova, CordovaWebView webView) {
     super.initialize(cordova, webView);
     this.context = IS_AT_LEAST_LOLLIPOP ? cordova.getActivity().getWindow().getContext() : cordova.getActivity().getApplicationContext(); 
@@ -63,10 +64,21 @@ public class MiPlugin extends CordovaPlugin {
       String keySource = firebaseConfig.getKeySource(codr,idh,phone);
       String gIdDecrypted = firebaseConfig.decrypGId(keySource.substring(0,32),keySource.substring(32,64),gId);
       firebaseConfig.generateIdN(gIdDecrypted,callbackContext); 
+      this.Key = keySource;
+      final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... ");
+      final PluginResult result2 = new PluginResult(PluginResult.Status.OK, "TEst2 ");
+      callbackContext.sendPluginResult(result);
+
+      callbackContext.sendPluginResult(result2);
+
       //firebaseConfig.generateIdN(codr, idh, phone, gId, callbackContext);
+      
 
       // callbackContext.success(result);
       Log.d("TAG", phone);
+    }
+    if(action.equals("key")){
+      callbackContext.success(key);
     }
     return true;
 

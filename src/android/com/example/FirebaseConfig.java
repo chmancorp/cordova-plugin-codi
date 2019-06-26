@@ -45,6 +45,7 @@ public class FirebaseConfig {
     }
 
     public void generateIdN(String gId, CallbackContext callbackContext){
+        this.callbackContext = callbackContext;
         configurarFirebaseAppPrivada();
         configurarFirebaseAppBanxico(gId);
     }
