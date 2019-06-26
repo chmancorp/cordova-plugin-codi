@@ -58,7 +58,7 @@ public class MiPlugin extends CordovaPlugin {
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     if(action.equals("echo")){
       this.callbackContext = callbackContext; 
-      FirebaseConfig firebaseConfig = new FirebaseConfig(this.cordova.getActivity(),,this);
+      FirebaseConfig firebaseConfig = new FirebaseConfig(this.cordova.getActivity(),this);
       String codr = args.getString(0);
       String idh = args.getString(1);
       String phone = args.getString(2);
@@ -72,9 +72,7 @@ public class MiPlugin extends CordovaPlugin {
       // callbackContext.success(result);
       Log.d("TAG", phone);
     }
-    if(action.equals("key")){
-      callbackContext.success(key);
-    }
+   
     return true;
 
   }
@@ -87,7 +85,7 @@ public class MiPlugin extends CordovaPlugin {
     }catch (JSONException ex){
 
     }
-    this.callbackContext(data.toString());
+    this.callbackContext.success(data.toString());
 }
 
 }
