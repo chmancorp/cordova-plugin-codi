@@ -58,14 +58,14 @@ public class MiPlugin extends CordovaPlugin {
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     if(action.equals("echo")){
       this.callbackContext = callbackContext; 
-      FirebaseConfig firebaseConfig = new FirebaseConfig(this.cordova.getActivity());
+      FirebaseConfig firebaseConfig = new FirebaseConfig(this.cordova.getActivity(),,this);
       String codr = args.getString(0);
       String idh = args.getString(1);
       String phone = args.getString(2);
       String gId = args.getString(3);
       this.keySource = firebaseConfig.getKeySource(codr,idh,phone);
       String gIdDecrypted = firebaseConfig.decrypGId(keySource.substring(0,32),keySource.substring(32,64),gId);
-      firebaseConfig.generateIdN(gIdDecrypted,this);      
+      firebaseConfig.generateIdN(gIdDecrypted);      
       //firebaseConfig.generateIdN(codr, idh, phone, gId, callbackContext);
 
       // callbackContext.success(result);

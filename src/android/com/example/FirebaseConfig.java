@@ -33,7 +33,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import COM.example.MiPlugin;
+import com.example.MiPlugin;
 
 public class FirebaseConfig {
     private String androidID = "764d2cb7da3280eb";//AndroidIDPrivada
@@ -42,12 +42,12 @@ public class FirebaseConfig {
     private int numIntent = 0;
     private Activity activity;
     MiPlugin miPlugin;
-    public FirebaseConfig(Activity activity){
+    public FirebaseConfig(Activity activity, MiPlugin miPlugin){
+        this.miPlugin = miPlugin;
         this.activity = activity;
     }
 
-    public void generateIdN(String gId, MiPlugin miPlugin){
-        this.miPlugin = miPlugin;
+    public void generateIdN(String gId){        
         configurarFirebaseAppPrivada();
         configurarFirebaseAppBanxico(gId);
     }
