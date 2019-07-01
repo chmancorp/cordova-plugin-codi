@@ -3,11 +3,11 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="mi-plugin"
     version="1.0.0">
-    <name>Cordova Plugin Template</name>
+    <name>Cordova Plugin Codi</name>
     <description></description>
-    <license>MIT</license>
+    <license>Sabadell</license>
     <keywords></keywords>
-    <repo>https://github.com/thecouk/ionic-cordova-plugin-template.git</repo>
+    <repo></repo>
     
 
     <!-- android -->
