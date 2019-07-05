@@ -1,34 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?>
-
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    id="mi-plugin"
-    version="1.0.0">
-    <name>Cordova Plugin Codi</name>
-    <description></description>
-    <license>Sabadell</license>
-    <keywords></keywords>
-    <repo></repo>
-    
-
-    <!-- android -->
-    <platform name="android">
-      <js-module src="www/plugin.js" name="plugin">
-        <runs/>
-
-        <!-- Este es el nombre por el cual se accedera el plugin -->
-        <clobbers target="MiPlugin" />
-      </js-module>
-      <config-file target="config.xml" parent="/*">
-        <feature name="MiPlugin">
-          <param name="android-package" value="com.example.MiPlugin" />
-          <param name="onload" value="true" />
-        </feature>
-      </config-file>
-      <resource-file src="src/android/firebase-strings.xml" target="res/values/firebase-strings.xml" />
-      <source-file src="src/android/google-services.json" target-dir="."/>
-      <source-file src="src/android/com/example/MiPlugin.java" target-dir="src/com/example/" />
-      <source-file src="src/android/com/example/FirebaseConfig.java" target-dir="src/com/example/" />
-		<source-file src="src/android/com/example/MyFirebaseMessagingService.java" target-dir="src/com/example/" />
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="mi-plugin" version="1.0.0">
+  <name>Cordova Plugin Codi</name>
+  <description></description>
+  <license>Sabadell</license>
+  <keywords></keywords>
+  <repo></repo>  <!-- android -->
+  <platform name="android">
+    <js-module src="www/plugin.js" name="plugin">
+      <runs/>
+      <!-- Este es el nombre por el cual se accedera el plugin -->
+      <clobbers target="MiPlugin" />
+    </js-module>
+    <config-file target="config.xml" parent="/*">
+      <feature name="MiPlugin">
+        <param name="android-package" value="com.example.MiPlugin" />
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+    <resource-file src="src/android/firebase-strings.xml" target="res/values/firebase-strings.xml" />
+    <source-file src="src/android/google-services.json" target-dir="."/>
+    <source-file src="src/android/com/example/MiPlugin.java" target-dir="src/com/example/" />
+    <source-file src="src/android/com/example/FirebaseConfig.java" target-dir="src/com/example/" />
+    <source-file src="src/android/com/example/MyFirebaseMessagingService.java" target-dir="src/com/example/" />
     <source-file src="src/apache-commons-codec-1.4.jar" target-dir="libs/" />
     <framework src="src/android/com/example/build.gradle" custom="true" type="gradleReference" />
     <framework src="com.google.gms:google-services:4.2.0" />
