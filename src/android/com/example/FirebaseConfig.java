@@ -54,13 +54,11 @@ public class FirebaseConfig {
 
     public String getKeySource(String codR,String idH,String nc){
         String sha512Codr = new String(Hex.encodeHex(DigestUtils.sha512(codR)));
-        String keySource = new String(Hex.encodeHex(DigestUtils.sha512(sha512Codr+ idH + nc )));
         return keySource;
     }
 
     public String getSha512(String val){
         String sha512Val = new String(DigestUtils.sha512(val));
-        return sha512Val;
     }
 
     public String decrypGId(String aesKey,String aesiv,String gId){

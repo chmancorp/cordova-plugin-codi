@@ -8,5 +8,20 @@
       "ios"
     ]
   },
-  "description": "Plantilla base para crear un Plugin personalizado"
+  "description": "Plantilla base para crear un Plugin personalizado",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chmancorp/cordova-plugin-codi"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "NA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chmancorp/cordova-plugin-codi/issues"
+  },
+  "homepage": "https://github.com/chmancorp/cordova-plugin-codi#readme"
 }
