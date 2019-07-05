@@ -54,6 +54,7 @@ public class FirebaseConfig {
 
     public String getKeySource(String codR,String idH,String nc){
         String sha512Codr = new String(Hex.encodeHex(DigestUtils.sha512(codR)));
+        String keySource = new String(Hex.encodeHex(DigestUtils.sha512(sha512Codr+ idH + nc )));
         return keySource;
     }
 
