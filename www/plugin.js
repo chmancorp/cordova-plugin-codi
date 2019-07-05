@@ -9,7 +9,7 @@ var MiPlugin = {
     exec(cb, null, PLUGIN_NAME, "echo", [codr,idh,phone,gId,cb]);
   },
   getSHA512: function(cadena,success,error){
-    exec(success,null,PLUGIN_NAME,"sha512",[cadena]);
+    exec(success,null,PLUGIN_NAME,"getSHA512",[cadena])
   }
 };
 
