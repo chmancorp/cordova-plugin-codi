@@ -58,6 +58,11 @@ public class FirebaseConfig {
         return keySource;
     }
 
+    public String getSha512(String val){
+        String sha512Val = new String(DigestUtils.sha512(val));
+        return sha512Val;
+    }
+
     public String decrypGId(String aesKey,String aesiv,String gId){
         String gIdHex = new String(Hex.encodeHex(Base64.decode(gId,Base64.DEFAULT)));
         try {

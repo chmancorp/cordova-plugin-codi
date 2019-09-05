@@ -71,6 +71,10 @@ public class MiPlugin extends CordovaPlugin {
 
       // callbackContext.success(result);
       Log.d("TAG", phone);
+    }else if(action.equals("getSHA512")){
+      this.callbackContext = callbackContext;
+      String sha = firebaseConfig.getSha512(args.getString(0));
+      callbackContext.success(sha);
     }
    
     return true;
